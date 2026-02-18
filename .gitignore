@@ -1,0 +1,32 @@
+# PHP / Composer
+vendor
+/composer-setup.php
+/.phpunit.result.cache
+
+# Docker
+docker-compose.override.yml
+**/docker/.env
+**/docker/*.local.ini
+
+# Storage / runtime
+/storage/*
+!/storage/.gitkeep
+/tmp
+/cache
+/logs
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Node / front-end (если есть)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Misc
+*.bak
+*.swp
+*.tmp

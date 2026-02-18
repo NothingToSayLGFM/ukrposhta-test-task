@@ -1,0 +1,101 @@
+openapi: 3.0.3
+info:
+  title: UkrPoshta Post Index API
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+paths:
+  /post-indexes:
+    get:
+      summary: Get post indexes
+      parameters:
+        - in: query
+          name: post_code
+          schema:
+            type: string
+          description: Specific post code to fetch
+        - in: query
+          name: q
+          schema:
+            type: string
+          description: Search by city or post office
+        - in: query
+          name: page
+          schema:
+            type: integer
+            default: 1
+          description: Page number
+      responses:
+        "200":
+          description: List of post indexes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/PostIndex"
+
+    post:
+      summary: Add new post indexes
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: "#/components/schemas/PostIndex"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+
+    delete:
+      summary: Delete post indexes
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                post_codes:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        "200":
+          description: Deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: deleted
+
+components:
+  schemas:
+    PostIndex:
+      type: object
+      properties:
+        post_code:
+          type: string
+        region:
+          type: string
+        district:
+          type: string
+        city:
+          type: string
+        post_office:
+          type: string
+        hash:
+          type: string
