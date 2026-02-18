@@ -102,5 +102,5 @@ docker exec -it ukrposhta_php php cli/import.php /var/www/storage/imports/postin
 Swagger документація знаходиться по шляху 
 
 ```bash
-http://localhost:8080/
+http://localhost:8080/swagger.php
 ```
