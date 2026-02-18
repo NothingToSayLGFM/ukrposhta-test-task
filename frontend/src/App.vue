@@ -62,7 +62,8 @@ const columns = [
                 {
                     type: "error",
                     size: "small",
-                    onClick: async () => {
+                    onClick: async (e) => {
+                        e.stopPropagation();
                         await handleDelete(row.post_code);
                     },
                 },
